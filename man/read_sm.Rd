@@ -7,20 +7,20 @@
 read_sm(x, clean_names = TRUE, drop_surplus_cols = TRUE, ...)
 }
 \arguments{
-\item{x}{A string containing the filepath of the SurveyMonkey data. File extensions must be supported by \link[vroom](vroom),
+\item{x}{A string containing the filepath of the SurveyMonkey data. File extensions must be supported by [vroom::vroom()],
 and file-types are determined automatically by that function on the basis of their extension.}
 
-\item{clean_names}{If logical: Should the names of the data be cleaned? If `TRUE` (the default), `janitor::make_clean_names()` is used.
+\item{clean_names}{If logical: Should the names of the data be cleaned? If `TRUE` (the default), [janitor::make_clean_names()] is used.
 Can also be a name-cleaning function supplied by the user.}
 
-\item{drop_surplus_cols}{Should 'surplus' columns be dropped from the output? Surplus columns are defined as those included within `monkeyreadr:::default_cols()`
-which also contain no information (i.e all values are `NA`)}
+\item{drop_surplus_cols}{Should 'surplus' columns be dropped from the output? Surplus columns are defined as those included within monkeyreadr:::default_cols()
+for which all values are NA}
 }
 \value{
 A tibble
 }
 \description{
-`read_sm()` is a wrapper around \link[vroom](vroom) that reads SurveyMonkey data from a file and converts it into a tidy tibble with clean names.
+`read_sm()` is a wrapper around [vroom::vroom()] that reads SurveyMonkey data from a file and converts it into a tidy tibble with clean names.
 }
 \details{
 SurveyMonkey data exports are not tidy: Names are often missing from the first row, and the second row

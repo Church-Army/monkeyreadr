@@ -8,7 +8,7 @@ default_cols <- function(){
 
 #' Read and clean SurveyMonkey data from a file
 #'
-#' `read_sm()` is a wrapper around \link[vroom](vroom) that reads SurveyMonkey data from a file and converts it into a tidy tibble with clean names.
+#' `read_sm()` is a wrapper around [vroom::vroom()] that reads SurveyMonkey data from a file and converts it into a tidy tibble with clean names.
 #'
 #' SurveyMonkey data exports are not tidy: Names are often missing from the first row, and the second row
 #' contains varios pieces of metadata, rather than observations of each variable. Furthermore, it often includes
@@ -16,14 +16,14 @@ default_cols <- function(){
 #' then (by default) cleans all names and drops any of the default rows that contain no information. It also coerces
 #' default columns into appropriate types (e.g. 'Respondent ID' as a character vector).
 #'
-#' @param x A string containing the filepath of the SurveyMonkey data. File extensions must be supported by \link[vroom](vroom),
+#' @param x A string containing the filepath of the SurveyMonkey data. File extensions must be supported by [vroom::vroom()],
 #' and file-types are determined automatically by that function on the basis of their extension.
 #'
-#' @param clean_names If logical: Should the names of the data be cleaned? If `TRUE` (the default), `janitor::make_clean_names()` is used.
+#' @param clean_names If logical: Should the names of the data be cleaned? If `TRUE` (the default), [janitor::make_clean_names()] is used.
 #' Can also be a name-cleaning function supplied by the user.
 #'
-#' @param drop_surplus_cols Should 'surplus' columns be dropped from the output? Surplus columns are defined as those included within `monkeyreadr:::default_cols()`
-#' which also contain no information (i.e all values are `NA`)
+#' @param drop_surplus_cols Should 'surplus' columns be dropped from the output? Surplus columns are defined as those included within monkeyreadr:::default_cols()
+#' for which all values are NA
 #'
 #' @returns A tibble
 #'
