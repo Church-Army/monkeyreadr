@@ -1,11 +1,10 @@
 Package: monkeyreadr
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Read and clean SurveyMonkey data from a table
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Dave Lovell
+Maintainer: The package maintainer <davidpg.lovell@gmail.com>
+Description: Conveniently read data from [SurveyMonkey](https://surveymonkey.com) surveys, automagically dropping the redundant columns that are included by default, and using the second-row of header data to repair missing names before deleting it, resulting in a tidy tibble.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
