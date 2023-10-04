@@ -10,3 +10,4 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/Church-Army/monkeyreadr
 BugReports: https://github.com/Church-Army/monkeyreadr/issues
+RoxygenNote: 7.2.3

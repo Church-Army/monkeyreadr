@@ -3,7 +3,33 @@ default_cols <- function(){
     "First Name", "Last Name", "Custom Data 1")
 }
 
-read_sm <- function(x, clean_names = TRUE, drop_surplus_cols = TRUE){
+
+
+
+#' Read and clean SurveyMonkey data from a file
+#'
+#' `read_sm()` is a wrapper around \link[vroom](vroom) that reads SurveyMonkey data from a file and converts it into a tidy tibble with clean names.
+#'
+#' SurveyMonkey data exports are not tidy: Names are often missing from the first row, and the second row
+#' contains varios pieces of metadata, rather than observations of each variable. Furthermore, it often includes
+#' by default columns that contain no information. This function uses the second-row metadata to complete missing names,
+#' then (by default) cleans all names and drops any of the default rows that contain no information. It also coerces
+#' default columns into appropriate types (e.g. 'Respondent ID' as a character vector).
+#'
+#' @param x A string containing the filepath of the SurveyMonkey data. File extensions must be supported by \link[vroom](vroom),
+#' and file-types are determined automatically by that function on the basis of their extension.
+#'
+#' @param clean_names If logical: Should the names of the data be cleaned? If `TRUE` (the default), `janitor::make_clean_names()` is used.
+#' Can also be a name-cleaning function supplied by the user.
+#'
+#' @param drop_surplus_cols Should 'surplus' columns be dropped from the output? Surplus columns are defined as those included within `monkeyreadr:::default_cols()`
+#' which also contain no information (i.e all values are `NA`)
+#'
+#' @returns A tibble
+#'
+#' @export
+read_sm <- function(x, clean_names = TRUE, drop_surplus_cols = TRUE,
+                    ...){
 
   ## determine cleaning function from clean_names -------------------
   stopifnot(length(clean_names) == 1)
@@ -14,7 +40,7 @@ read_sm <- function(x, clean_names = TRUE, drop_surplus_cols = TRUE){
 
   ## read sm_data ---------------------------------------------------
   suppressMessages({
-    sm_data <- vroom::vroom(x, show_col_types = FALSE)
+    sm_data <- vroom::vroom(x, show_col_types = FALSE, ...)
     })
 
   missing_names <- stringr::str_detect(names(sm_data), "^\\.\\.\\.\\d+$")
