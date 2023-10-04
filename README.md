@@ -8,10 +8,6 @@ monkeyreadR is currently a one-function package: `read_sm()` is a wrapper around
 
 `clean_names` can be FALSE, or it can also be a name-cleaning function of your choice. If `TRUE` (the default), `janitor::make_clean_names()` is used.
 
-## TODO:
-
-* Create documentation
-
 ### Installing
 
 This isn't on CRAN, so the only place to get it is here:
