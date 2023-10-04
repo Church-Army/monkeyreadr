@@ -29,9 +29,7 @@ read_sm <- function(x, clean_names = TRUE, drop_surplus_cols = TRUE){
     dplyr::mutate(
       sm_data,
       dplyr::across(
-        dplyr::any_of(default_cols),
-        as.character
-        )
+        dplyr::any_of(default_cols), as.character)
       )
 
   sm_data <-
@@ -66,9 +64,9 @@ read_sm <- function(x, clean_names = TRUE, drop_surplus_cols = TRUE){
   ## Drop surplus columns ------------------------------------------------------
   if(drop_surplus_cols){
 
-    one_value <- \(x) length(unique(x)) == 1
+    all_na <- \(x) all(is.na(x))
 
-    sm_data <- dplyr::select(sm_data, -(any_of(default_cols) & where(one_value)))
+    sm_data <- dplyr::select(sm_data, -(any_of(default_cols) & where(all_na)))
 
   }
 
