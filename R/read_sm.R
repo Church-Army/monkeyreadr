@@ -22,8 +22,10 @@ default_cols <- function(){
 #' @param clean_names If logical: Should the names of the data be cleaned? If `TRUE` (the default), [janitor::make_clean_names()] is used.
 #' Can also be a name-cleaning function supplied by the user.
 #'
-#' @param drop_surplus_cols Should 'surplus' columns be dropped from the output? Surplus columns are defined as those included within monkeyreadr:::default_cols()
-#' for which all values are NA
+#' @param drop_surplus_cols Should 'surplus' columns be dropped from the output? Surplus columns are defined as those included within `monkeyreadr:::default_cols()`
+#' for which all values are `NA`
+#'
+#' @param ... Additional arguments passed to `vroom()`
 #'
 #' @returns A tibble
 #'
