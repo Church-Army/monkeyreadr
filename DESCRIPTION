@@ -12,3 +12,4 @@ URL: https://github.com/Church-Army/monkeyreadr
 BugReports: https://github.com/Church-Army/monkeyreadr/issues
 RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)
+Imports: janitor, vroom, stringr, dplyr
