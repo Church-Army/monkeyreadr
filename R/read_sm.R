@@ -42,7 +42,7 @@ read_sm <- function(x, clean_names = TRUE, drop_surplus_cols = TRUE,
 
   ## read sm_data ---------------------------------------------------
   suppressMessages({
-    sm_data <- vroom::vroom(x, show_col_types = FALSE, ...)
+    sm_data <- vroom::vroom(x, show_col_types = FALSE, delim = ",", ...)
     })
 
   missing_names <- stringr::str_detect(names(sm_data), "^\\.\\.\\.\\d+$")
